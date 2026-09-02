@@ -1,0 +1,5 @@
+# Populated by device/itel/S666LN/import-kernel.sh from the separate
+# itel-rs4-kernel project. It is a build OUTPUT of that project, not source, so
+# it is not tracked here -- re-run the import script to recreate it. Without it
+# the ROM builds the GKI source in kernel/itel/S666LN instead.
+prebuilt/
