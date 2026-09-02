@@ -56,12 +56,18 @@ both sets — one kernel satisfies all 404. Verified against a from-source build
 5.10.260:
 
 ```
-198 modules · 12,229 symbol refs · 0 CRC mismatches
+198 modules · 12,226 symbol refs · 10,347 matched · 0 CRC mismatches
+206 modules ·  9,491 symbol refs ·  8,455 matched · 0 CRC mismatches
 ```
 
 The device tree runs this check at build time (`kmi-check.py`, wired into
 `droidcore` via `Android.mk`). A kernel that fails it builds fine and boots
 nothing, so the gate is not optional.
+
+⚠ The vendor_dlkm figure was 12,229 until 2026-09-03 and is now 12,226: the
+symbol graph changed with the module set. Re-read it from a build rather than
+carrying it forward — a stale count in the file people re-derive from is worse
+than no count.
 
 ## Load order
 
