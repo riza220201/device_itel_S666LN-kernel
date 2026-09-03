@@ -32,7 +32,7 @@ listed here so the set can be audited without reading git history:**
 
 | file | what it is |
 |---|---|
-| `modules/vendor_dlkm/mali_kbase_mt6789.ko` | Mali r54p1 kbase, built from Samsung open source against 5.10.260. vermagic `5.10.260-Riza-vanilla`. |
+| `modules/vendor_dlkm/mali_kbase_mt6789.ko` | Mali r54p1 kbase, built from Samsung open source against 5.10.268. vermagic `5.10.268-Riza-vanilla`. |
 | `modules/vendor_boot/adaptive-ts.ko` | stock binary, one byte changed, to ungate the touchscreen in recovery. `0x6c74: 0x52806089 -> 0x52806009`. |
 
 Everything else is byte-identical to revision 28. That is checkable directly:
@@ -53,7 +53,7 @@ deliberately not used, and stock is re-extracted instead.
 
 Every module here requires `module_layout = 0x7c24b32d`, and the **same** KMI covers
 both sets — one kernel satisfies all 404. Verified against a from-source build of
-5.10.260:
+5.10.268:
 
 ```
 198 modules · 12,226 symbol refs · 10,347 matched · 0 CRC mismatches
