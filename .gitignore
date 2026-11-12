@@ -1,5 +1,7 @@
-# Populated by device/itel/S666LN/import-kernel.sh from the separate
-# itel-rs4-kernel project. It is a build OUTPUT of that project, not source, so
-# it is not tracked here -- re-run the import script to recreate it. Without it
-# the ROM builds the GKI source in kernel/itel/S666LN instead.
-prebuilt/
+# lineage-23.2: prebuilt/ IS tracked. It holds the kernel the ROM ships -- the
+# Neutron-built custom kernel (itel-rs4-kernel), imported by
+# device/itel/S666LN/import-kernel.sh after it proves the Image is the one inside
+# the published boot image and the KMI gate passes on both module sets.
+# There is no from-source fallback on this branch (BoardConfig.mk $(error)s
+# without it), so a clone without prebuilt/ could not build at all.
+# (lineage-20.0 ignored prebuilt/ because it could fall back to a GKI source build.)

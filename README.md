@@ -2,10 +2,23 @@
 
 Prebuilt kernel-adjacent artefacts for the itel RS4 (S666LN, MT6789 / Helio G99).
 
-**This repo does NOT contain the kernel image.** The `Image` is built from source —
-see `TARGET_KERNEL_SOURCE` in the device tree's `BoardConfig.mk`, which points at
-`kernel/itel/S666LN` (Google GKI `android12-5.10-lts`, pinned, plus
-`s666ln_defconfig`). Only artefacts with no source live here.
+**Branch `lineage-23.2`: this repo DOES carry the kernel image**, in `prebuilt/`. It is the
+custom kernel built by the separate kernel project
+([`itel-rs4-kernel`](https://github.com/riza220201/itel-rs4-kernel): Neutron clang, BORE, ntsync),
+imported by the device tree's `import-kernel.sh`, which refuses the import unless the `Image.gz`
+is byte-identical to the kernel inside the **published** boot image and the KMI gate passes on both
+module sets below. The ROM never compiles a kernel, and there is no from-source fallback: the device
+tree's `BoardConfig.mk` stops the build when `prebuilt/{Image.gz, vmlinux.symvers, IMPORTED}` is
+missing. (On `lineage-20.0` the image was built from `kernel/itel/S666LN` and `prebuilt/` was ignored.)
+
+```
+prebuilt/Image.gz          the kernel (published v9 vanilla: 5.10.272-Riza-vanilla)
+prebuilt/vmlinux.symvers   its symbol CRCs, read by the build-time KMI gate
+prebuilt/kernel.config     provenance only
+prebuilt/IMPORTED          where it came from, which published image proved it, sha256 of the three
+```
+
+Everything else here has no source and comes from stock:
 
 ```
 dtb/mt6789.dtb            200,368 B   MediaTek dt_table (magic d7b7ab1e), one dtb inside

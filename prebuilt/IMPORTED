@@ -1,0 +1,9 @@
+variant:   vanilla
+source:    /home/riza/itel-rs4-kernel/.build/out-vanilla
+published: /home/riza/itel-rs4-kernel/out/vanilla/ItelRS4-boot-vanilla-20261028.img
+kernel:    Linux version 5.10.272-Riza-vanilla (riza@RizaKernel) (Neutron clang version 24.0.0git (https://github.com/llvm/llvm-project.git f42c87ba2c70219b1f4ad1f031a5b6a1ea6603fb), Neutron LLD 24.0.0 (https://github.com/llvm/llvm-project.git f42c87ba2c70219b1f4ad1f031a5b6a1ea6603fb)) #1 SMP PREEMPT Sat Oct 24 11:19:08 UTC 2026
+imported:  2026-11-12 22:27:00 UTC
+sha256:
+  14102c9291386d060ef8a9a98b092285e172de1ed114435b9b90d3ea4c288514  Image.gz
+  8bc7d3dc56318d7dee16b273646b17a2965a4488ce4ea9dfdfc6ba78cd1957b6  vmlinux.symvers
+  5f113b875131f632bb742839bbc18841ff94192138846cb79aed797f7d2ecef7  kernel.config
