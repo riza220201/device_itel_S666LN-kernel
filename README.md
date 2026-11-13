@@ -7,9 +7,11 @@ custom kernel built by the separate kernel project
 ([`itel-rs4-kernel`](https://github.com/riza220201/itel-rs4-kernel): Neutron clang, BORE, ntsync),
 imported by the device tree's `import-kernel.sh`, which refuses the import unless the `Image.gz`
 is byte-identical to the kernel inside the **published** boot image and the KMI gate passes on both
-module sets below. The ROM never compiles a kernel, and there is no from-source fallback: the device
-tree's `BoardConfig.mk` stops the build when `prebuilt/{Image.gz, vmlinux.symvers, IMPORTED}` is
-missing. (On `lineage-20.0` the image was built from `kernel/itel/S666LN` and `prebuilt/` was ignored.)
+module sets below. With `prebuilt/{Image.gz, vmlinux.symvers, IMPORTED}` present (the normal case) the
+ROM never compiles a kernel. Without `prebuilt/` at all, the device tree's `BoardConfig.mk` falls back,
+loudly, to building plain GKI from `kernel/itel/S666LN`, so the tree still builds from public sources;
+a partial `prebuilt/` stops the build. (On `lineage-20.0` the image was built from `kernel/itel/S666LN`
+and `prebuilt/` was ignored.)
 
 ```
 prebuilt/Image.gz          the kernel (published v9 vanilla: 5.10.272-Riza-vanilla)
