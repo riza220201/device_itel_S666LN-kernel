@@ -5,3 +5,7 @@
 # There is no from-source fallback on this branch (BoardConfig.mk $(error)s
 # without it), so a clone without prebuilt/ could not build at all.
 # (lineage-20.0 ignored prebuilt/ because it could fall back to a GKI source build.)
+
+# Markdown: only the root README is published; every other .md stays local.
+*.md
+!/README.md
