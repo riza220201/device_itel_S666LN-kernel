@@ -40,21 +40,22 @@ against the zip's central directory before anything was read from it.
 * `modules/vendor_boot/` — 206 modules from the stock `vendor_boot` ramdisk.
 * `modules/vendor_dlkm/` — 198 modules from the stock `vendor_dlkm` image.
 
-**Exactly two artefacts are ours rather than stock, both deliberate and both
+**Exactly three artefacts are ours rather than stock, all deliberate and all
 listed here so the set can be audited without reading git history:**
 
 | file | what it is |
 |---|---|
-| `modules/vendor_dlkm/mali_kbase_mt6789.ko` | Mali r54p1 kbase, built from Samsung open source against 5.10.268. vermagic `5.10.268-Riza-vanilla`. |
+| `modules/vendor_dlkm/mali_kbase_mt6789.ko` | Mali r54p1 kbase, built from Samsung open source (SM-A175F) against the imported v9 kernel, 5.10.272. vermagic `5.10.272-Riza-vanilla`, srcversion `EFC2461A110EA84728CF6A0` (unchanged since 5.10.260: same source, only the kernel moved). sha256 `c131c029…`. |
+| `modules/vendor_dlkm/mtk_gpufreq_mt6789.ko` | MT6789 GPU frequency driver, built from Samsung open source (SM-A175F `gpufreq/v2`, `gpuppm` from `v2_legacy`) ported to revision 28's ABI, against 5.10.272, clang 12.0.5. **Stock behaviour, no overclock:** OPP table, limit/adjust tables and fp tables byte-identical to revision 28's module, OPP0 = 1,100,000 kHz, AVS on; 158 of 160 functions identical to stock (the other two: a `__LINE__` constant and one branch layout). sha256 `5f44c321…`. |
 | `modules/vendor_boot/adaptive-ts.ko` | stock binary, one byte changed, to ungate the touchscreen in recovery. `0x6c74: 0x52806089 -> 0x52806009`. |
 
 Everything else is byte-identical to revision 28. That is checkable directly:
-extract the stock `vendor_dlkm.img` and `vendor_boot.img` and compare — 197/198
-and 205/206 respectively, with the two rows above as the only differences.
+extract the stock `vendor_dlkm.img` and `vendor_boot.img` and compare — 196/198
+and 205/206 respectively, with the three rows above as the only differences.
 
 🔴 **Provenance is a property to VERIFY, not to assert.** Every module in
 revision 28 carries vermagic `5.10.237-android12-9-gf280f42a626b`; a module here
-bearing any other vermagic, other than the two listed above, does not belong to
+bearing any other vermagic, other than the two built ones listed above, does not belong to
 this revision and should be treated as a defect. Revision 28 is pinned
 deliberately — the shipped identity is tied to incremental `251212V1661`, so
 mixing revisions breaks the fingerprint the ROM presents.
@@ -65,8 +66,8 @@ deliberately not used, and stock is re-extracted instead.
 ## KMI
 
 Every module here requires `module_layout = 0x7c24b32d`, and the **same** KMI covers
-both sets — one kernel satisfies all 404. Verified against a from-source build of
-5.10.268:
+both sets — one kernel satisfies all 404. Verified against the imported v9 kernel
+(`prebuilt/vmlinux.symvers`, 5.10.272), with both rebuilt GPU modules in place (2026-11-13):
 
 ```
 198 modules · 12,226 symbol refs · 10,347 matched · 0 CRC mismatches
