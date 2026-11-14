@@ -1,9 +1,9 @@
 variant:   vanilla
-source:    /home/riza/itel-rs4-kernel/.build/out-vanilla
-published: /home/riza/itel-rs4-kernel/out/vanilla/ItelRS4-boot-vanilla-20261028.img
-kernel:    Linux version 5.10.272-Riza-vanilla (riza@RizaKernel) (Neutron clang version 24.0.0git (https://github.com/llvm/llvm-project.git f42c87ba2c70219b1f4ad1f031a5b6a1ea6603fb), Neutron LLD 24.0.0 (https://github.com/llvm/llvm-project.git f42c87ba2c70219b1f4ad1f031a5b6a1ea6603fb)) #1 SMP PREEMPT Sat Oct 24 11:19:08 UTC 2026
-imported:  2026-11-12 22:27:00 UTC
+source:    /home/riza/itel-rs4-kernel/.build/v10-vanilla/kout
+published: /home/riza/itel-rs4-kernel/out/v10/vanilla/ItelRS4-boot-vanilla-20261115.img
+kernel:    Linux version 5.10.272-Riza-vanilla (riza@RizaKernel) (Neutron clang version 24.0.0git (https://github.com/llvm/llvm-project.git f42c87ba2c70219b1f4ad1f031a5b6a1ea6603fb), Neutron LLD 24.0.0 (https://github.com/llvm/llvm-project.git f42c87ba2c70219b1f4ad1f031a5b6a1ea6603fb)) #1 SMP PREEMPT Tue Nov 10 19:12:17 UTC 2026
+imported:  2026-11-14 17:37:39 UTC
 sha256:
-  14102c9291386d060ef8a9a98b092285e172de1ed114435b9b90d3ea4c288514  Image.gz
-  8bc7d3dc56318d7dee16b273646b17a2965a4488ce4ea9dfdfc6ba78cd1957b6  vmlinux.symvers
-  5f113b875131f632bb742839bbc18841ff94192138846cb79aed797f7d2ecef7  kernel.config
+  6489aad6d9a2706d52d7153c7984634ef1a7ea751513b711ec346819fbad1623  Image.gz
+  8ff8ad0dba846949b2efe96b6f61337bfdebaa2f115f65a5b0a7d66560a7c03f  vmlinux.symvers
+  402585d234b19431a16acff614f00faa97ce58fb7a333a918daf45234e9322ca  kernel.config

@@ -1954,6 +1954,7 @@
 0x6f1b5cb7	snd_soc_dapm_disable_pin_unlocked	vmlinux	EXPORT_SYMBOL_GPL	
 0x92bac4d9	__traceiter_android_vh_blk_alloc_flush_queue	vmlinux	EXPORT_SYMBOL_GPL	
 0x0d2640d1	__SCK__tp_func_android_vh_shmem_alloc_page	vmlinux	EXPORT_SYMBOL_GPL	
+0x8c5d9c02	hid_safe_input_report	vmlinux	EXPORT_SYMBOL_GPL	
 0xc1086e0c	sysrq_toggle_support	vmlinux	EXPORT_SYMBOL_GPL	
 0x7d75dacf	devm_clk_bulk_get_optional	vmlinux	EXPORT_SYMBOL_GPL	
 0xb598e3ff	pci_restore_state	vmlinux	EXPORT_SYMBOL	

@@ -4,7 +4,8 @@ Prebuilt kernel-adjacent artefacts for the itel RS4 (S666LN, MT6789 / Helio G99)
 
 **Branch `lineage-23.2`: this repo DOES carry the kernel image**, in `prebuilt/`. It is the
 custom kernel built by the separate kernel project
-([`itel-rs4-kernel`](https://github.com/riza220201/itel-rs4-kernel): Neutron clang, BORE, ntsync),
+([`itel-rs4-kernel`](https://github.com/riza220201/itel-rs4-kernel): Neutron clang, BORE, ntsync, and
+`epoll_pwait2`, which Android 16's libgui needs and 5.10 lacks — without it BLASTBufferQueue spins on ENOSYS),
 imported by the device tree's `import-kernel.sh`, which refuses the import unless the `Image.gz`
 is byte-identical to the kernel inside the **published** boot image and the KMI gate passes on both
 module sets below. With `prebuilt/{Image.gz, vmlinux.symvers, IMPORTED}` present (the normal case) the
@@ -14,7 +15,7 @@ a partial `prebuilt/` stops the build. (On `lineage-20.0` the image was built fr
 and `prebuilt/` was ignored.)
 
 ```
-prebuilt/Image.gz          the kernel (published v9 vanilla: 5.10.272-Riza-vanilla)
+prebuilt/Image.gz          the kernel (published v10 vanilla: 5.10.272-Riza-vanilla)
 prebuilt/vmlinux.symvers   its symbol CRCs, read by the build-time KMI gate
 prebuilt/kernel.config     provenance only
 prebuilt/IMPORTED          where it came from, which published image proved it, sha256 of the three
@@ -68,8 +69,9 @@ deliberately not used, and stock is re-extracted instead.
 ## KMI
 
 Every module here requires `module_layout = 0x7c24b32d`, and the **same** KMI covers
-both sets — one kernel satisfies all 404. Verified against the imported v9 kernel
-(`prebuilt/vmlinux.symvers`, 5.10.272), with both rebuilt GPU modules in place (2026-11-13):
+both sets — one kernel satisfies all 404. Verified against the imported v10 kernel
+(`prebuilt/vmlinux.symvers`, 5.10.272), with both rebuilt GPU modules in place (2026-11-15; v9 gave
+the same counts on 2026-11-13):
 
 ```
 198 modules · 12,226 symbol refs · 10,347 matched · 0 CRC mismatches
